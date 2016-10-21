@@ -20,7 +20,7 @@
 #
 # Use a descriptive name for the node:
 #
-node.name: attc
+#node.name: attc
 #
 # Add custom attributes to the node:
 #
