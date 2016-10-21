@@ -14,13 +14,13 @@
 #
 # Use a descriptive name for your cluster:
 #
-# cluster.name: my-application
+#cluster.name: attc-index
 #
 # ------------------------------------ Node ------------------------------------
 #
 # Use a descriptive name for the node:
 #
-# node.name: node-1
+node.name: attc
 #
 # Add custom attributes to the node:
 #
@@ -30,11 +30,12 @@
 #
 # Path to directory where to store the data (separate multiple locations by comma):
 #
-# path.data: /path/to/data
+path.data: ${OPENSHIFT_DATA_DIR}elasticsearch/data
+path.work: ${OPENSHIFT_TMP_DIR}elasticsearch
 #
 # Path to log files:
 #
-# path.logs: /path/to/logs
+path.logs: ${OPENSHIFT_DIY_LOG_DIR}elasticsearch_logs
 #
 # ----------------------------------- Memory -----------------------------------
 #
@@ -51,11 +52,13 @@
 #
 # Set the bind address to a specific IP (IPv4 or IPv6):
 #
-# network.host: 192.168.0.1
+network.host: ${OPENSHIFT_DIY_IP}
 #
 # Set a custom port for HTTP:
 #
-# http.port: 9200
+http.port: ${OPENSHIFT_DIY_PORT}
+
+transport.tcp.port: 3306
 #
 # For more information, see the documentation at:
 # <http://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html>
@@ -65,8 +68,8 @@
 # Pass an initial list of hosts to perform discovery when new node is started:
 # The default list of hosts is ["127.0.0.1", "[::1]"]
 #
-# discovery.zen.ping.unicast.hosts: ["host1", "host2"]
-#
+discovery.zen.ping.unicast.hosts: []
+discovery.zen.ping.multicast.enabled: false
 # Prevent the "split brain" by configuring the majority of nodes (total number of nodes / 2 + 1):
 #
 # discovery.zen.minimum_master_nodes: 3
