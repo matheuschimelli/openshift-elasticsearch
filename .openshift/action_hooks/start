@@ -1,5 +1,10 @@
 #!/bin/bash
 # The logic to start up your application should be put in this
 # script. The application will work only if it binds to
-# $OPENSHIFT_DIY_IP:8080
-nohup $OPENSHIFT_REPO_DIR/diy/testrubyserver.rb $OPENSHIFT_DIY_IP $OPENSHIFT_REPO_DIR/diy |& /usr/bin/logshifter -tag diy &
+# $OPENSHIFT_INTERNAL_IP:8080
+DATA_DIR=${OPENSHIFT_DATA_DIR}
+
+#cp ${TEMPLATES_DIR}/elasticsearch.yml ${INSTALL_DIR}/elasticsearch/config/elasticsearch.yml
+
+echo "Starting Elasticsearch as service."
+nohup ${DATA_DIR}/elasticsearch/bin/elasticsearch -d
