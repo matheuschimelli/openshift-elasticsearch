@@ -1,6 +1,7 @@
 #!/bin/bash
-
-INSTALL_DIR=${OPENSHIFT_HOMEDIR}/app-root/data
+# The logic to start up your application should be put in this
+# script. The application will work only if it binds to
+# $OPENSHIFT_INTERNAL_IP:8080
 echo "Stopping elasticsearch."
 killall java
 exit 0
